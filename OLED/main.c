@@ -35,6 +35,7 @@ uint32_t mins=22;
 uint32_t hours=15;
 uint32_t months=2;
 uint32_t days=7;
+//记录下开始的月日时分秒（年直接写了2024
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -95,8 +96,8 @@ int main(void)
   MX_I2C1_Init();
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
-  OLED_Init(); //屏幕初始�?
-  OLED_Clear(); //先清�?
+  OLED_Init(); //屏幕初始化
+  OLED_Clear(); //先清屏
   HAL_TIM_Base_Start_IT(&htim1);
   OLED_ShowString(55,4,":",16);
   OLED_ShowChar(85,4,':',16);
@@ -177,6 +178,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
             {
                 hours=0;
                 days++;
+                //这里没有考虑月数的增加了（因为懒得）
             }
 
 
